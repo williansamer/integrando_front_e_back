@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+</head>
+<body>
+    <%- include("partials/navbar", {title: "Email"}) %> 
+
+    <%- include("partials/section") %>
+    <section>
+        <a href="/" style="color: blue;">Voltar</a>
+        <h1>Mande um email para a reitoria</h1>
+        <form action="/api/email" method="POST">
+            <input id="email" type="email" name="email" placeholder="Digite seu email">
+            <input id="subject" type="text" name="subject" placeholder="Digite o Assunto">
+            <textarea id="message" name="message" id="message" cols="30" rows="10" placeholder="Digite a mensagem"></textarea>
+            <input type="submit" onclick="clearInput()">
+        </form>
+    </section>
+    
+    
+    <%- include("partials/footerbar") %>
+
+<script src="./scripts/email.js"></script>
+</body>
+</html>
