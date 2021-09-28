@@ -20,9 +20,9 @@ let transporter = nodemailer.createTransport({
     }
 })
 
-router.use("/email", express.urlencoded({extended: true}), express.static(path.join(__dirname, "public/email.ejs")))
-
 router.use(cors(options));
+router.use("/email", express.urlencoded({extended: true}), express.static(path.join(__dirname, "public/email.ejs")))
+//Como existe a tag 'form' no email.ejs, O modo de encode é o 'urlencoded'. Vem direto para já, sem a necessidade de um arquivo .js
 
 router.get("/cadastro", (req, res)=>{
     res.json(JSON.stringify(posts.getAll()))
@@ -32,12 +32,12 @@ router.post("/cadastro/new", express.json(), (req, res)=>{
 //IMPORTANTÍSSIMO: 
     //Use "express.urlencoded({extended: true})" quando vai usar a tag 'form'
     //Use "express.json()" quando não for usar a tag 'form'
-
-let name = req.body.name;
+    //OBS: o '.json' espera que envie o request(req) como string e não em formato de formulário.
+    let name = req.body.name;
     let age = req.body.age;
     let group = req.body.group;
 
-    posts.newPost(name, age, group)
+    posts.newPost(name, age, group) //name, age, group como argumentos
     res.send("Aluno Matriculado")
 })
 

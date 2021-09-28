@@ -5,7 +5,7 @@ module.exports = {
             group: "Mason"}],
     getAll(){return this.posts},
     newPost(name, age, group){
-        this.posts.push({id: generateId(), name, age, group})
+        this.posts.push({id: generateId(), name, age, group}) //Como são os mesmos nomes das chaves('name' por ex), pode ser apenas {name}, se fosse diferente, teria que ser: {name: nome} por ex.
     }
 }
 

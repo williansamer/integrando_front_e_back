@@ -6,21 +6,20 @@ const router = require("./routes/api");
 
 dotenv.config();
 
-app.use(express.static("public"));
-app.set("views", path.join(__dirname, "public"));
-app.set("view engine", "ejs");
-
 app.use("/api", router);
+app.use(express.json(), express.static("public"));
+app.set("views", path.join(__dirname, "public")); //template engine(EJS)
+app.set("view engine", "ejs"); //template engine(EJS)
 
-app.get("/",express.json(), (req, res)=>{
-    res.render("index")
+app.get("/", (req, res)=>{
+    res.render("index") //Renderizando EJS(arquivo index)
 })
 
-app.get("/cadastro",express.json(), (req, res)=>{
+app.get("/cadastro", (req, res)=>{
     res.render("cadastro")
 })
 
-app.get("/email",express.json(), (req, res)=>{
+app.get("/email", (req, res)=>{
     res.render("email")
 })
 
