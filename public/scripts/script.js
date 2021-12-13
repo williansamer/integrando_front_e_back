@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 })
 
 function updatePost(){
-    fetch("http://192.168.1.103:3001/api/cadastro") //Fazendo a ligação com a ROTA GET(router.get) do 'api/cadastro'
+    fetch("http://192.168.1.119:3001/api/cadastro") //Fazendo a ligação com a ROTA GET(router.get) do 'api/cadastro'
         .then((res)=>{
             //console.log(res)
             return res.json(); //retorna promisse
@@ -41,7 +41,7 @@ function newPost(){
                 headers: new Headers({"content-type": "application/json"}), //Definindo o 'header' do tipo json, pois é uma string que temos que enviar para o BD
                 body: JSON.stringify(post)}; //Enviando os objetos em tipo string no BODY(Lá no BACK, o 'name' por ex será 'req.body.name')
 
-    fetch("http://192.168.1.103:3001/api/cadastro/new", options) //Fazendo a ligação com a ROTA POST(router.post) do 'api/cadastro/new'. E enviando, pelo meio do options, os dados a serem gravados no BD.
+    fetch("http://192.168.1.119:3001/api/cadastro/new", options) //Fazendo a ligação com a ROTA POST(router.post) do 'api/cadastro/new'. E enviando, pelo meio do options, os dados a serem gravados no BD.
         .then(()=>{
             updatePost(); //Atualizando a página
             document.querySelector("#na").value = ""; //limpando os values dos inputs
